@@ -34,15 +34,20 @@
         .header .user-menu a {
             color: white;
             text-decoration: none;
-            font-size: 1.8em;
+            font-size: 1em;
             transition: color 0.3s ease;
+            background-color: #e74c3c;
+            padding: 8px 15px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
         }
 
         .header .user-menu a:hover {
-            color: #1abc9c;
+            background-color: #c0392b;
         }
 
-        /* Conteúdo Principal */
+        
         .main-container {
             max-width: 800px;
             margin: 40px auto;
@@ -140,7 +145,11 @@
         <div class="logo">
             <i class="fa-solid fa-cloud-sun"></i> App do Clima
         </div>
-    
+        <div class="user-menu">
+            <a href="{% url 'logout' %}">
+                <i class="fa-solid fa-sign-out-alt"></i> Sair
+            </a>
+        </div>
     </header>
 
     <main class="main-container">

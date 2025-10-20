@@ -25,3 +25,8 @@ def login_view(request):
             return render(request, 'login.html', {'error': 'Email ou senha incorretos'})
 
     return render(request, 'login.html')
+
+
+def logout_view(request):
+    request.session.flush()
+    return redirect('login')

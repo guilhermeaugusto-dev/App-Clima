@@ -2,7 +2,7 @@ import requests
 from django.shortcuts import render, redirect
 
 def dashboard_view(request):
-    if not request.user.is_authenticated:
+    if not request.session.get('user_id'):
         return redirect('login')
     
     contexto = {}
