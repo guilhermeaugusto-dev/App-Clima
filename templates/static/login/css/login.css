@@ -1,0 +1,132 @@
+
+
+body {
+    background-color: #007BFF;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 120px auto;
+    padding: 30px 25px;
+    background-color: #f6f6f8;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.app-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.login-box h2 {
+    text-align: center;
+    margin-bottom: 35px;
+    color: #fff;
+    font-weight: 500;
+}
+
+
+.input-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.input-group label {
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+
+.input-field,
+.input-group input,
+.input-group textarea,
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    height: 45px;
+    line-height: 1.2;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    background-color: #fff;
+    color: #333;
+    outline: none;
+}
+
+
+.input-field:focus,
+.input-group input:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 8px rgba(0,123,255,0.2);
+}
+
+::placeholder {
+    color: #aaa;
+    opacity: 1;
+}
+
+.login-button {
+    width: 100%;
+    padding: 13px 0;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.register-link a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+.input-group .error {
+    background-color: #f8d7da;  /* Fundo vermelho claro */
+    color: #721c24;              /* Cor do texto escura */
+    border: 1px solid #f5c6cb;   /* Borda sutil */
+    padding: 10px;               /* Espaçamento interno */
+    border-radius: 5px;          /* Bordas arredondadas */
+    font-weight: bold;           /* Texto em negrito */
+    margin-top: 8px;             /* Espaço para separar do campo de input */
+}

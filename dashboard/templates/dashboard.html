@@ -1,0 +1,180 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - App do Clima</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .header .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .header .user-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.8em;
+            transition: color 0.3s ease;
+        }
+
+        .header .user-menu a:hover {
+            color: #1abc9c;
+        }
+
+        /* Conteúdo Principal */
+        .main-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        .main-container h2 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+
+        /* Barra de Pesquisa */
+        .search-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .search-container input[type="text"] {
+            flex-grow: 1;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .search-container button {
+            padding: 12px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-container button:hover {
+            background-color: #2980b9;
+        }
+        
+        /* Mensagem de Erro */
+        .error-message {
+            color: #c0392b;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .weather-results {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            background-color: #fafafa;
+        }
+        
+        .weather-results .city {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 0;
+        }
+
+        .weather-icon img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .weather-details .temperature {
+            font-size: 3.5em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .weather-details .description {
+            font-size: 1.2em;
+            text-transform: capitalize;
+            color: #777;
+        }
+
+        .initial-message {
+            color: #888;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <i class="fa-solid fa-cloud-sun"></i> App do Clima
+        </div>
+    
+    </header>
+
+    <main class="main-container">
+    <h2>Olá, {{ request.session.user_first_name|title }}!</h2>
+        <p>Consulte o clima de qualquer cidade do mundo.</p>
+
+        <form method="GET" action="{% url 'dashboard' %}" class="search-container">
+            <input type="text" name="cidade" placeholder="Digite o nome da cidade..." value="{{ cidade_pesquisada|default:'' }}" required>
+            <button type="submit">
+                <i class="fa-solid fa-search"></i> Pesquisar
+            </button>
+        </form>
+
+        <div class="results-area">
+            {% if clima %}
+                <div class="weather-results">
+                    <h3 class="city">{{ clima.cidade }}, {{ clima.pais }}</h3>
+                    <div class="weather-icon">
+                        <img src="https://openweathermap.org/img/wn/{{ clima.icone }}@2x.png" alt="Ícone do tempo">
+                    </div>
+                    <div class="weather-details">
+                        <p class="temperature">{{ clima.temperatura }}°C</p>
+                        <p class="description">{{ clima.descricao }}</p>
+                    </div>
+                </div>
+            {% elif error %}
+                 <div class="error-message">
+                    <p>{{ error }}</p>
+                 </div>
+            {% else %}
+                <p class="initial-message">Pesquise por uma cidade para ver o clima.</p>
+            {% endif %}
+        </div>
+    </main>
+
+</body>
+</html>
