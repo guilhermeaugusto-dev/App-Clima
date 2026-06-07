@@ -15,7 +15,7 @@ Uma aplicação Django para consulta de informações climáticas com sistema de
 - Django 5.2.7
 - SQLite (desenvolvimento)
 - HTML5/CSS3
-- Bootstrap (opcional)
+
 
 ## Como Executar o Projeto
 
